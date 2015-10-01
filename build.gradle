@@ -1,0 +1,62 @@
+apply plugin: 'sonar-runner'
+
+
+buildscript {
+  repositories {
+    mavenCentral()
+    maven {
+      url "https://plugins.gradle.org/m2/" 
+    }
+  }
+  dependencies {
+    classpath "gradle.plugin.com.alejoHomes.gradle:jasmine-gradle:0.1" 
+  }
+}
+apply plugin: "com.alejoHomes.jasmine"  
+defaultTasks 'jasmineRefresh','jasmineRun','sonarRunner'
+
+repositories {
+    mavenCentral()
+    maven {
+      url "https://plugins.gradle.org/m2/" 
+    }
+  }
+
+
+jasmine {
+    basePath = 'src/'
+    files = [
+         "main/webapp/scripts/jasmine/jquery.js",
+         "main/webapp/scripts/jasmine/jasmine.js",
+         "main/webapp/scripts/jasmine/jasmine-jquery.js",
+         "main/webapp/resources/js/presentation/buttons.js",
+         "main/webapp/resources/js/validations/validations.js",
+         "test/js/spec/figure_spec.js"
+    ]
+    additional = [ 
+        reporters:['progress','junit'],
+        junitReporter: [
+          outputDir: 'test/report'
+        ]
+    ]
+}
+sonarRunner {
+    toolVersion = '2.4'
+    
+    sonarProperties {
+        property "sonar.projectKey", "JqueryProject"
+        property "sonar.projectName" , "JqueryProyect"
+        property "sonar.host.url", "http://sonarchile.nisum.com"
+        property "sonar.jdbc.url", "jdbc:mysql://sonarchile.nisum.com:3306/sonar"
+        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
+        property "sonar.jdbc.username", "sonarqubeusr"
+        property "sonar.jdbc.password", "s0n4rus3r"
+        property "sonar.sources","src/"
+        property "sonar.exclusions", ["src/main/webapp/scripts/jasmine/*"]
+        property "sonar.languages", "javascript"
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}

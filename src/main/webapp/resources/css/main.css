@@ -1,0 +1,33 @@
+body{
+	background-image: url('http://crunchify.com/bg.png');
+}
+
+.div1{
+	background-color: red;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+}
+.square {
+	margin: auto;
+	width: 100px;
+	height: 100px;
+	background: red;
+}
+
+.rectangle {
+	margin: auto;
+	width: 200px;
+	height: 100px;
+	background: red;
+}
+.circle {
+	margin: auto;
+	width: 100px;
+	height: 100px;
+	background: red;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}
+td { text-align: center; }
