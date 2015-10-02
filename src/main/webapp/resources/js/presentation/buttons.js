@@ -5,9 +5,8 @@ $(document).ready(function() {
         var circlechecked = $('#f2').is(':checked');
         var rectanglechecked = $('#f3').is(':checked');
         var color = $('#color').val();
-        changeColor($('#d1'),color);
         if(!checkFigureSelected(listfigures)){
-            changeTextLabel($('#labelmessage'));
+           changeTextLabel($('#labelmessage'));
         }
         if(squarechecked === true){
            changeCss($('#d1'),"square");

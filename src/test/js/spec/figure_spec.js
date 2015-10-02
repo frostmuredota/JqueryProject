@@ -63,12 +63,12 @@ describe("Figure to change is selected",function(){
         describe("When the radio button is selected",function(){
             beforeEach(function() {
                 setFixtures('<td><input type="radio" name="figure" id="f1" />Square'
-                +'<input type="radio" name="figure" id="f2" />Circle'
+                +'<input type="radio" name="figure" id="f2" checked/>Circle'
                 +'<input type="radio" name="figure" id="f3" />Rectangle</td>');
             });
             it("Then change the shape",function(){
                 var listfigures =$("input:radio[name=figure]");
-                expect(!checkFigureSelected(listfigures)).toBeTruthy();
+                expect(checkFigureSelected(listfigures)).toBeTruthy();
             });
         });
     });
