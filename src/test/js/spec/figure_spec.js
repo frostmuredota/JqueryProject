@@ -81,8 +81,10 @@ describe("Change color of the element",function(){
             });
             it("Then change the color",function(){
                 var colorToChange = "rgb(255, 0, 0)";
+                var colorToFail = "rgb(0, 255, 0)";
                 changeColor($('#d1'),colorToChange);
-                expect($('#d1').css('background-color')).toEqual(colorToChange);
+                var newColor=$('#d1').css('background-color');
+                expect(newColor).toEqual(colorToChange);
             });
         });
     });
